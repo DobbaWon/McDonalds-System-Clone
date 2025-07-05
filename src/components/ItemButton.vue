@@ -1,7 +1,7 @@
 <template>
   <button @click="handleClick" :class="{ disabled: isDisabled } " :disabled="isDisabled">
     <span>{{ label }}</span>
-    <span v-if="price !== undefined" class="price">${{ price.toFixed(2) }}</span>
+    <span v-if="price !== undefined" class="price"></span>
   </button>
 </template>
 

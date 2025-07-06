@@ -1,7 +1,13 @@
 <template>
+  <div class="header">
+    <h1>Point of Sale</h1>
+  </div>
   <BackButton label="Back" to="/POSHome" />
-  <POSMenu />
-  <POSReceipt />
+  
+  <div class="point-of-sale">
+    <POSMenu />
+    <POSReceipt />
+  </div>
 </template>
 
 <script>
@@ -22,4 +28,11 @@ export default {
 </script>
 
 <style scoped>
+.point-of-sale {
+  padding: 20px;
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+  display: flex;
+}
 </style>

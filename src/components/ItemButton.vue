@@ -1,7 +1,7 @@
 <template>
   <button @click="handleClick" :class="{ disabled: isDisabled } " :disabled="isDisabled">
-    <span>{{ label }}</span>
-    <span v-if="price !== undefined" class="price"></span>
+      <h1>{{ label }}</h1>
+      <h2>{{ price }}</h2>
   </button>
 </template>
 
@@ -32,20 +32,28 @@ export default {
 
 <style scoped>
 button {
-  background-color: #f0c040;
-  border: none;
+  background-color: rgb(201, 197, 197);
+  border: 2px solid rgb(61, 60, 60);
   border-radius: 5px;
-  color: white;
+  border-width: 2px;
   cursor: pointer;
-  padding: 10px 20px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  width: 175px;
+  height: 175px;
+  margin: 20px;
 }
 
 button.disabled {
   background-color: black;
   cursor: not-allowed;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+h2 {
+  font-size: 1.3rem;
+  margin: 0;
 }
 </style>

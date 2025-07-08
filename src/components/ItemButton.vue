@@ -1,7 +1,7 @@
 <template>
-  <button @click="handleClick" :class="{ disabled: isDisabled } " :disabled="isDisabled">
-      <h1>{{ label }}</h1>
-      <h2>{{ price }}</h2>
+  <button @click="handleClick" :class="{ disabled: isDisabled }" :disabled="isDisabled">
+    <h1>{{ label }}</h1>
+    <h2>£{{ price.toFixed(2) }}</h2>
   </button>
 </template>
 
@@ -24,7 +24,10 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('click');
+      this.$emit('add-to-order', {
+        label: this.label,
+        price: this.price
+      });
     }
   }
 };
@@ -35,7 +38,6 @@ button {
   background-color: rgb(201, 197, 197);
   border: 2px solid rgb(61, 60, 60);
   border-radius: 5px;
-  border-width: 2px;
   cursor: pointer;
   text-align: center;
   width: 175px;

@@ -3,12 +3,13 @@
     <h1>Point of Sale</h1>
   </div>
   <BackButton label="Back" to="/POSHome" />
-  
+
   <div class="point-of-sale">
-    <POSMenu />
-    <POSReceipt />
+    <POSMenu @item-selected="addItemToOrder" />
+    <POSReceipt :order="order" />
   </div>
 </template>
+
 
 <script>
 import BackButton from '../../components/BackButton.vue';
@@ -23,7 +24,18 @@ export default {
     POSMenu,
     POSReceipt,
     ItemButton
+  },
+  data() {
+    return {
+      order: []
+    };
+  },
+  methods: {
+  addItemToOrder(item) {
+    this.order.push(item);
   }
+}
+
 };
 </script>
 

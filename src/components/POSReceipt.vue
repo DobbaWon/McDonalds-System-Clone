@@ -3,29 +3,40 @@
     <div class="header">
       <h1>Receipt</h1>
     </div>
-      <p>Thank you for your order!</p>
-      <p>Order Number: #12345</p>
-      <p>Date: {{ new Date().toLocaleDateString() }}</p>
-      <p>Time: {{ new Date().toLocaleTimeString() }}</p>
+    <p>Thank you for your order!</p>
+    <p>Order Number: #12345</p>
+    <p>Date: {{ new Date().toLocaleDateString() }}</p>
+    <p>Time: {{ new Date().toLocaleTimeString() }}</p>
 
     <h2>Items Ordered:</h2>
     <ul>
-      <li>Burger - $5.99</li>
-      <li>Fries - $2.49</li>
-      <li>Coke - $1.99</li>
+      <li v-for="(item, index) in order" :key="index">
+        {{ item.label }} - ${{ item.price.toFixed(2) }}
+      </li>
     </ul>
 
-    <h2>Total: $10.47</h2>
+    <h2>Total: ${{ total.toFixed(2) }}</h2>
   </div>
 </template>
+
 
 <script>
 export default {
   name: 'POSReceipt',
-  components: {
+  props: {
+    order: {
+      type: Array,
+      default: () => []
+    }
+  },
+  computed: {
+    total() {
+      return this.order.reduce((sum, item) => sum + item.price, 0);
+    }
   }
 };
 </script>
+
 
 <style scoped>
 .pos-receipt {

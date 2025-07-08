@@ -4,19 +4,9 @@
   </div>
 
   <div class="button-row">
-    <PageButton label="Point Of Sale Pages" to="/POSHome" />
-    <PageButton label="Not in use yet"/>
-    <PageButton label="Not in use yet"/>
+    <PageButton label="Point Of Sale Pages" to="/PointOfSale" />
     <PageButton label="Not in use yet"/>    
   </div>
-
-  <div class="button-row">
-    <PageButton label="Not in use yet"/>
-    <PageButton label="Not in use yet"/>
-    <PageButton label="Not in use yet"/>
-    <PageButton label="Not in use yet"/>
-  </div>
-
 </template>
 
 <script>

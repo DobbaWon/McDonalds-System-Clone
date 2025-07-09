@@ -19,7 +19,7 @@ Todo List:
 [x] Create Point Of Sale to display POSMenu and POSReceipt
 [x] Emit item data onclick up to the Point Of Sale
 [x] Store item data in an order and pass through to Receipt
-[ ] Replace Receipt with POSOrder until Order is served 
+[x] Replace Receipt with POSOrder until Order is served 
 [ ] Replace Drink Selections with Pop-up boxes for more choice and encapsulation
 [ ] Add a toggle to outage items, preventing them from being used
 [ ] Add a POSServed Screen to cover menu when order has been served, acting as a confirmation screen

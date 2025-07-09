@@ -91,7 +91,7 @@ export default {
 <style scoped>
 .pos-menu {
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #ffdbdb;
   font-family: Arial, sans-serif;
   max-width: 70%;
   min-width: 70%;

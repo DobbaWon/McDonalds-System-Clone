@@ -6,16 +6,18 @@
 
   <div class="point-of-sale">
     <POSMenu @item-selected="addItemToOrder" />
-    <POSReceipt :order="order" />
+    <POSReceipt @serve-clicked="handleServeClicked" :order="order" v-if="isReceiptVisible" />
+    <POSOrder @serve-clicked="handleServeClicked" :order="order" v-if="!isReceiptVisible" />
   </div>
 </template>
 
 
 <script>
-import BackButton from '../../components/BackButton.vue';
-import ItemButton from '../../components/ItemButton.vue';
-import POSMenu from '../../components/POSMenu.vue';
-import POSReceipt from '../../components/POSReceipt.vue';
+import BackButton from '../components/BackButton.vue';
+import ItemButton from '../components/ItemButton.vue';
+import POSMenu from '../components/POSMenu.vue';
+import POSReceipt from '../components/POSReceipt.vue';
+import POSOrder from '../components/POSOrder.vue';
 
 export default {
   name: 'PointOfSale',
@@ -23,16 +25,21 @@ export default {
     BackButton,
     POSMenu,
     POSReceipt,
-    ItemButton
+    ItemButton,
+    POSOrder
   },
   data() {
     return {
-      order: []
+      order: [],
+      isReceiptVisible: false
     };
   },
   methods: {
   addItemToOrder(item) {
     this.order.push(item);
+  },
+  handleServeClicked() {
+    this.isReceiptVisible = !this.isReceiptVisible;
   }
 }
 

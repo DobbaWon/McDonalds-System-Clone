@@ -10,19 +10,27 @@
 
     <h2>Items Ordered:</h2>
     <ul>
-      <li v-for="(item, index) in order" :key="index">
-        {{ item.label }} - ${{ item.price.toFixed(2) }}
+      <li v-for="(item, index) in groupedOrder" :key="index">
+        {{ item.label }} <span v-if="item.quantity > 1">x{{ item.quantity }}</span> - £{{ item.totalPrice.toFixed(2) }}
       </li>
     </ul>
 
-    <h2>Total: ${{ total.toFixed(2) }}</h2>
+    <h2>Total: £{{ total.toFixed(2) }}</h2>
+
+    <ReceiptButton isServed="true" @serve-clicked="$emit('serve-clicked')"/>
   </div>
 </template>
 
 
 <script>
+import ReceiptButton from './ReceiptButton.vue';
+
 export default {
   name: 'POSReceipt',
+  components: {
+    ReceiptButton
+  },
+
   props: {
     order: {
       type: Array,
@@ -30,10 +38,33 @@ export default {
     }
   },
   computed: {
-    total() {
-      return this.order.reduce((sum, item) => sum + item.price, 0);
+  total() {
+    return this.order.reduce((sum, item) => sum + item.price, 0);
+  },
+  groupedOrder() {
+    const map = new Map();
+
+    for (const item of this.order) {
+      const key = item.label;
+
+      if (map.has(key)) { // If the item already exists, update its quantity and total price
+        const existing = map.get(key);
+        existing.quantity += 1;
+        existing.totalPrice += item.price;
+      } else {
+        map.set(key, {
+          label: item.label,
+          price: item.price,
+          quantity: 1,
+          totalPrice: item.price
+        });
+      }
     }
+
+    return Array.from(map.values());
+   }
   }
+
 };
 </script>
 
@@ -41,7 +72,7 @@ export default {
 <style scoped>
 .pos-receipt {
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #ded7d7;
   font-family: Arial, sans-serif;
   max-width: 30%;
   min-width: 30%;
@@ -49,11 +80,17 @@ export default {
   border: 2px solid #ccc;
   border-radius: 5px;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  align-items: center;
+
 }
 
 .header {
   margin-bottom: 20px;
-}
+  width: 100%;
+  }
 
 h1 {
   font-size: 2rem;
@@ -74,5 +111,11 @@ ul {
 
 li {
   padding: 5px 0;
+}
+
+.receipt-button {
+  margin-top: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 </style>

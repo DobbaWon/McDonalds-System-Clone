@@ -1,21 +1,15 @@
 <template>
-  <button @click="handleClick" :class="{ disabled: isDisabled }" :disabled="isDisabled">
+  <button :class="{ disabled: isDisabled }" @click="handleClick" :disabled="isDisabled">
     <h1>{{ label }}</h1>
-    <h2>£{{ price.toFixed(2) }}</h2>
   </button>
 </template>
-
 <script>
 export default {
+  name: 'PopUpButton',
   props: {
     label: {
       type: String,
       required: true
-    },
-    price: {
-      type: Number,
-      required: true,
-      default: 0
     },
     isDisabled: {
       type: Boolean,
@@ -24,10 +18,9 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('add-to-order', {
-        label: this.label,
-        price: this.price
-      });
+      if (!this.isDisabled) {
+        this.$emit('pop-up-clicked', this.label);
+      }
     }
   }
 };

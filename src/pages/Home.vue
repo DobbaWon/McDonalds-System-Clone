@@ -4,7 +4,7 @@
   </div>
 
   <div class="button-row">
-    <PageButton label="Point Of Sale Pages" to="/PointOfSale" />
+    <PageButton label="Point Of Sale Page" to="/PointOfSale" />
     <PageButton label="Not in use yet"/>    
   </div>
 </template>

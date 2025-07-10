@@ -4,6 +4,118 @@
       <h1>Menu</h1>
     </div>
 
+    <MenuPopUpBox v-if ="isColdDrinkPopupOpen"
+      :menuItems="[{
+        id: 1,
+        label: 'Coca-Cola',
+        price: 1.99
+      }, {
+        id: 2,
+        label: 'Sprite',
+        price: 1.99
+      }, {
+        id: 3,
+        label: 'Fanta',
+        price: 1.99
+      }, {
+        id: 4,
+        label: 'Oasis',
+        price: 1.99
+      }, {
+        id: 5,
+        label: 'Dr Pepper',
+        price: 1.99
+      }, 
+      ]"
+      menuSummary="Cold Drinks"
+      @close="isColdDrinkPopupOpen = false"
+      @select="handleAddItem"
+    />
+
+    <MenuPopUpBox v-if ="isHotDrinkPopupOpen"
+      :menuItems="[{
+        id: 1,
+        label: 'Coffee',
+        price: 1.99
+      }, {
+        id: 2,
+        label: 'Tea',
+        price: 1.99
+      }, {
+        id: 3,
+        label: 'Hot Chocolate',
+        price: 2.49
+      }, {
+        id: 4,
+        label: 'Latte',
+        price: 2.99
+      }, {
+        id: 5,
+        label: 'Cappuccino',
+        price: 2.99
+      }, 
+      ]"
+      menuSummary="Hot Drinks"
+      @close="isHotDrinkPopupOpen = false"
+      @select="handleAddItem"
+    />
+
+    <MenuPopUpBox v-if ="isIcedDrinkPopupOpen"
+      :menuItems="[{
+        id: 1,
+        label: 'Iced Coffee',
+        price: 2.49
+      }, {
+        id: 2,
+        label: 'Iced Latte',
+        price: 2.99
+      }, {
+        id: 3,
+        label: 'Iced Mocha',
+        price: 3.49
+      }, {
+        id: 4,
+        label: 'Iced Tea',
+        price: 1.99
+      }, {
+        id: 5,
+        label: 'Iced Chocolate',
+        price: 2.99
+      }, 
+      ]"
+      menuSummary="Iced Drinks"
+      @close="isIcedDrinkPopupOpen = false"
+      @select="handleAddItem"
+    />
+
+    <MenuPopUpBox v-if ="isMilkshakePopupOpen"
+      :menuItems="[{
+        id: 1,
+        label: 'Chocolate Milkshake',
+        price: 2.99
+      }, {
+        id: 2,
+        label: 'Strawberry Milkshake',
+        price: 2.99
+      }, {
+        id: 3,
+        label: 'Vanilla Milkshake',
+        price: 2.99
+      }, {
+        id: 4,
+        label: 'Oreo Milkshake',
+        price: 3.49
+      }, {
+        id: 5,
+        label: 'Mint Chocolate Milkshake',
+        price: 3.49
+      }, 
+      ]"
+      menuSummary="Milkshakes"
+      @close="isMilkshakePopupOpen = false"
+      @select="handleAddItem"
+    />
+
     <h2>Core Items</h2>
     <div class="item-button-row">
       <ItemButton label="Big Mac" :price="5.99" @add-to-order="handleAddItem" />
@@ -42,12 +154,10 @@
 
     <h2>Drinks</h2>
     <div class="item-button-row">
-      <ItemButton label="Coke" :price="1.99" @add-to-order="handleAddItem" />
-      <ItemButton label="Diet Coke" :price="1.99" @add-to-order="handleAddItem" />
-      <ItemButton label="Sprite" :price="1.99" @add-to-order="handleAddItem" />
-      <ItemButton label="Fanta" :price="1.99" @add-to-order="handleAddItem" />
-      <ItemButton label="Iced Coffee" :price="2.49" @add-to-order="handleAddItem" />
-      <ItemButton label="Milkshake" :price="3.49" @add-to-order="handleAddItem" />
+      <PopUpButton label="Cold Drinks" @pop-up-clicked="handlePopUpClicked('Cold Drinks')"/>
+      <PopUpButton label="Hot Drinks" @pop-up-clicked="handlePopUpClicked('Hot Drinks')"/>
+      <PopUpButton label="Iced Drinks" @pop-up-clicked="handlePopUpClicked('Iced Drinks')"/>
+      <PopUpButton label="Milkshakes" @pop-up-clicked="handlePopUpClicked('Milkshakes')"/>
     </div>
     
     <h2>Desserts</h2>
@@ -74,17 +184,51 @@
 
 <script>
 import ItemButton from './ItemButton.vue';
+import MenuPopUpBox from './MenuPopUpBox.vue';
+import PopUpButton from './PopUpButton.vue';
 export default {
   name: 'POSMenu',
   components: {
-    ItemButton
+    ItemButton,
+    MenuPopUpBox,
+    PopUpButton
   },
   methods: {
-  handleAddItem(item) {
-    this.$emit('item-selected', item);
+    handleAddItem(item) {
+      this.$emit('item-selected', item);
+    },
+    closePopUps(){
+      this.isColdDrinkPopupOpen = false;
+      this.isHotDrinkPopupOpen = false;
+      this.isIcedDrinkPopupOpen = false;
+      this.isMilkshakePopupOpen = false;
+    },
+    handlePopUpClicked(menuType) {
+      this.closePopUps();
+      switch (menuType) {
+        case 'Cold Drinks':
+          this.isColdDrinkPopupOpen = !this.isColdDrinkPopupOpen;
+          break;
+        case 'Hot Drinks':
+          this.isHotDrinkPopupOpen = !this.isHotDrinkPopupOpen;
+          break;
+        case 'Iced Drinks':
+          this.isIcedDrinkPopupOpen = !this.isIcedDrinkPopupOpen;
+          break;
+        case 'Milkshakes':
+          this.isMilkshakePopupOpen = !this.isMilkshakePopupOpen;
+          break;
+      }
+    }
+  },
+  data() {
+    return {
+      isColdDrinkPopupOpen: false,
+      isHotDrinkPopupOpen: false,
+      isIcedDrinkPopupOpen: false,
+      isMilkshakePopupOpen: false
+    };
   }
-}
-
 };
 </script>
 

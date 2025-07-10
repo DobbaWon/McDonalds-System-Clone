@@ -5,7 +5,7 @@
   <BackButton label="Back" to="/POSHome" />
 
   <div class="point-of-sale">
-    <POSMenu @item-selected="addItemToOrder" />
+    <POSMenu ref="posMenuRef" @item-selected="addItemToOrder" />
     <POSReceipt @serve-clicked="handleServeClicked" :order="order" v-if="isReceiptVisible" />
     <POSOrder @serve-clicked="handleServeClicked" :order="order" v-if="!isReceiptVisible" />
   </div>
@@ -39,7 +39,11 @@ export default {
     this.order.push(item);
   },
   handleServeClicked() {
+    this.callPOSMenuMethod();
     this.isReceiptVisible = !this.isReceiptVisible;
+  },
+  callPOSMenuMethod() {
+    this.$refs.posMenuRef.closePopUps();
   }
 }
 

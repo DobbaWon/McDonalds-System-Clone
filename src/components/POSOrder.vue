@@ -8,6 +8,8 @@
     <ul>
       <li v-for="(item, index) in groupedOrder" :key="index">
         {{ item.label }} <span v-if="item.quantity > 1">x{{ item.quantity }}</span> - £{{ item.totalPrice.toFixed(2) }}
+        <button class="remove-button" @click="$emit('remove-item', item.label)">Remove</button>
+
       </li>
     </ul>
 
@@ -77,6 +79,18 @@ export default {
 .header {
   margin-bottom: 20px;
   width: 100%;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  font-weight: bold;
 }
 
 h1 {

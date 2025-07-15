@@ -21,10 +21,12 @@ Todo List:
 [x] Store item data in an order and pass through to Receipt
 [x] Replace Receipt with POSOrder until Order is served 
 [x] Replace Drink Selections with Pop-up boxes for more choice and encapsulation
-[ ] Add Meals which include fries and drink
-[ ] Add remove item from order feature
+[x] Add remove item from order feature
 [ ] Add a toggle to outage items, preventing them from being used
-[ ] Add a POSServed Screen to cover menu when order has been served, acting as a confirmation screen
 [ ] Save Order to a database
-[ ] Save Item Outages to a database
 
+
+Tasks Made Redundant:
+[/] Add Meals which include fries and drink
+
+I've learned through about 3 hours of work trying to implement a meal system without classes, that it is a very object oriented thing to do. No wonder the POS at work was made with C#. I managed to implement it to a small amount, but then realised that scaling up with drinks and fries, and cascading actions on that meal to those items, as well as upgrading the meal, would be an extremely tedious task. Due to this, the meal feature has been removed from my POS, and I have learned a valuable lesson when it comes to choosing a programming language for a project.

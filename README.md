@@ -22,7 +22,7 @@ Todo List:
 [x] Replace Receipt with POSOrder until Order is served 
 [x] Replace Drink Selections with Pop-up boxes for more choice and encapsulation
 [x] Add remove item from order feature
-[ ] Add a toggle to outage items, preventing them from being used
+[x] Add a toggle to outage items, preventing them from being used
 [ ] Save Order to a database
 
 

@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :class="{ disabled: isDisabled }" :disabled="isDisabled">
+  <button @click="handleClick" :class="{ disabled: isDisabled }">
     <h1>{{ label }}</h1>
     <h2>£{{ price.toFixed(2) }}</h2>
   </button>
@@ -47,7 +47,6 @@ button {
 
 button.disabled {
   background-color: black;
-  cursor: not-allowed;
 }
 
 h1 {

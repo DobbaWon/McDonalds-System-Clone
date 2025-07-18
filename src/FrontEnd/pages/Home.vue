@@ -5,7 +5,7 @@
 
   <div class="button-row">
     <PageButton label="Point Of Sale Page" to="/PointOfSale" />
-    <PageButton label="Not in use yet"/>    
+    <PageButton label="Kitchen Screen Page" to="/KitchenScreen" />
   </div>
 </template>
 

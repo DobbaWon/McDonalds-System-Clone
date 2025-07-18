@@ -2,7 +2,7 @@
   <div class="header">
     <h1>Point of Sale</h1>
   </div>
-  <BackButton label="Back" to="/POSHome" />
+  <BackButton label="Back" to="/" />
 
   <div class="point-of-sale">
     <POSMenu ref="posMenuRef" @item-selected="addItemToOrder" />

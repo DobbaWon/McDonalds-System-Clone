@@ -25,6 +25,8 @@ export default {
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  width: 100px;
+  text-align: center;
 }
 .back-button:hover {
   background-color: #369f6e;

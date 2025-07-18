@@ -35,6 +35,16 @@ def add_order():
     db.commit()
     return jsonify({"inserted_id": cursor.lastrowid})
 
+# Delete an order by ID
+@app.route('/orders/<int:order_id>', methods=['DELETE'])
+def delete_order(order_id):
+    cursor.execute("DELETE FROM orders WHERE id = %s", (order_id,))
+    print(f"Deleting order with ID: {order_id}")
+    db.commit()
+    if cursor.rowcount == 0:
+        return jsonify({"error": "Order not found"}), 404
+    return jsonify({"message": "Order deleted successfully"}), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
 

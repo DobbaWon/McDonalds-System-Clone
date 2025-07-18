@@ -1,7 +1,13 @@
 To Run:
+  pip install flask flask-cors python-dotenv mysql-connector-python
+  
   ** IN ROOT **
   - npm i
   - npm run dev
+
+  ** IN  BackEnd **
+  python app.py
+
 
 This is a project I have started while I am searching for graduate jobs. This keeps me constantly working around software development while I try to juggle working my part-time job at a full-time schedule, as well as working out, and developing my skills in my other hobbies.
 
@@ -19,8 +25,12 @@ Todo List:
 [x] Replace Drink Selections with Pop-up boxes for more choice and encapsulation
 [x] Add remove item from order feature
 [x] Add a toggle to outage items, preventing them from being used
-[ ] Save Order to a database
-
+[x] Save Order to a database
+[ ] Make Kitchen Screen Page
+[ ] Display Orders on Kitchen Screen Page
+[ ] Serve Button on each Order to delete from Server & Page
+[ ] Pending Orders to not clutter the Kitchen Screen
+[ ] Modify Last Order on PointOfSale
 
 Tasks Made Redundant:
 [/] Add Meals which include fries and drink

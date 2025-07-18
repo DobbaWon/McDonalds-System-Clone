@@ -26,10 +26,10 @@ Todo List:
 [x] Add remove item from order feature
 [x] Add a toggle to outage items, preventing them from being used
 [x] Save Order to a database
-[ ] Make Kitchen Screen Page
-[ ] Display Orders on Kitchen Screen Page
-[ ] Serve Button on each Order to delete from Server & Page
-[ ] Pending Orders to not clutter the Kitchen Screen
+[x] Make Kitchen Screen Page
+[x] Display Orders on Kitchen Screen Page
+[x] Serve Button on each Order to delete from Server & Page
+[x] Pending Orders to not clutter the Kitchen Screen
 [ ] Modify Last Order on PointOfSale
 
 Tasks Made Redundant:

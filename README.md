@@ -31,8 +31,8 @@ Todo List:
 [x] Serve Button on each Order to delete from Server & Page
 [x] Pending Orders to not clutter the Kitchen Screen
 [ ] Modify Last Order on PointOfSale
+[ ] Order Served Notification on PointOfSale
 
-Tasks Made Redundant:
-[/] Add Meals which include fries and drink
+When making this project, I opted away from using classes to define the items, orders, etc. This turned out to be a mistake, as I cannot cleanly implement any Meal or Item Modification features without falling into massive spaghetti code, manually adding fields to each individual component instance, more so than I already am doing. This is a project to help me get the hang of Vue, and I want to complete it, so I don't mind bypassing these features, and taking this as a hard-learned lesson to better research and plan my project. 
 
-I've learned through about 3 hours of work trying to implement a meal system without classes, that it is a very object oriented thing to do. No wonder the POS at work was made with C#. I managed to implement it to a small amount, but then realised that scaling up with drinks and fries, and cascading actions on that meal to those items, as well as upgrading the meal, would be an extremely tedious task. Due to this, the meal feature has been removed from my POS, and I have learned a valuable lesson when it comes to choosing a programming language for a project.
+Maybe in the future I will come back and fix this, increasing the project's complexity by implementing these features and refactoring it to be more Object-Oriented, as I do already plan to come back to this project to not only clean my code when I have learned more, but also to make the project look aesthetically better.

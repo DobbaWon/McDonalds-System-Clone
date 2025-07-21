@@ -30,7 +30,7 @@ Todo List:
 [x] Display Orders on Kitchen Screen Page
 [x] Serve Button on each Order to delete from Server & Page
 [x] Pending Orders to not clutter the Kitchen Screen
-[ ] Modify Last Order on PointOfSale
+[x] Modify Last Order on PointOfSale
 [ ] Order Served Notification on PointOfSale
 
 When making this project, I opted away from using classes to define the items, orders, etc. This turned out to be a mistake, as I cannot cleanly implement any Meal or Item Modification features without falling into massive spaghetti code, manually adding fields to each individual component instance, more so than I already am doing. This is a project to help me get the hang of Vue, and I want to complete it, so I don't mind bypassing these features, and taking this as a hard-learned lesson to better research and plan my project. 

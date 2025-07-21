@@ -45,8 +45,25 @@ def delete_order(order_id):
         return jsonify({"error": "Order not found"}), 404
     return jsonify({"message": "Order deleted successfully"}), 200
 
+# Delete the latest order, without the need to specify the ID
+@app.route('/orders/latest', methods=['DELETE'])
+def delete_latest_order():
+    cursor.execute("SELECT id FROM orders ORDER BY id DESC LIMIT 1")
+    latest_order = cursor.fetchone()
+    if not latest_order:
+        return jsonify({"error": "No orders found"}), 404
+
+    order_id = latest_order['id']
+    cursor.execute("DELETE FROM orders WHERE id = %s", (order_id,))
+    db.commit()
+    return jsonify({"message": "Latest order deleted successfully"}), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
 
 
 # Example JSON structure for the order

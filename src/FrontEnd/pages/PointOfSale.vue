@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       order: [],
-      isReceiptVisible: false
+      isReceiptVisible: false,
+      isEditingOrder: false
     };
   },
   methods: {
@@ -44,7 +45,25 @@ export default {
     },
     handleServeClicked() {
       this.callPOSMenuMethod();
-      this.sendOrderToServer();
+      if (this.isReceiptVisible) {
+        this.isEditingOrder = true;
+      }
+      else{
+        if (this.isEditingOrder){ // If we are editing an order, we want to send the updated order, and delete the previous one
+          fetch('http://localhost:5000/orders/latest', {
+            method: 'DELETE',
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Order deleted successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error deleting order:', error);
+          });
+        }
+        this.sendOrderToServer();
+        this.isEditingOrder = false;
+      }
       this.isReceiptVisible = !this.isReceiptVisible;
     },
     sendOrderToServer() {

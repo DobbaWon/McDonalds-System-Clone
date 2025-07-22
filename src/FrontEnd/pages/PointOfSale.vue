@@ -8,6 +8,9 @@
     <POSMenu ref="posMenuRef" @item-selected="addItemToOrder" />
     <POSReceipt @serve-clicked="handleServeClicked" :order="order" v-if="isReceiptVisible" />
     <POSOrder @serve-clicked="handleServeClicked" @remove-item="removeItemFromOrder" :order="order" v-if="!isReceiptVisible" />
+    <div class="order-served-notification" v-if="isOrderNotificationVisible">
+      <p>ORDER SERVED</p>
+    </div>
   </div>
 </template>
 
@@ -32,7 +35,8 @@ export default {
     return {
       order: [],
       isReceiptVisible: false,
-      isEditingOrder: false
+      isEditingOrder: false,
+      isOrderNotificationVisible: false
     };
   },
   methods: {
@@ -62,6 +66,7 @@ export default {
           });
         }
         this.sendOrderToServer();
+        this.orderServedNotification();
         this.isEditingOrder = false;
       }
       this.isReceiptVisible = !this.isReceiptVisible;
@@ -93,6 +98,12 @@ export default {
       if (index !== -1) {
         this.order.splice(index, 1);
       }
+    },
+    orderServedNotification() {
+      this.isOrderNotificationVisible = true;
+      setTimeout(() => {
+        this.isOrderNotificationVisible = false;
+      }, 2000); // Notification will disappear after 2 seconds
     }
   },
   computed: {
@@ -128,5 +139,26 @@ export default {
   font-family: Arial, sans-serif;
   max-width: 100%;
   display: flex;
+}
+.order-served-notification {
+  position: fixed;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 500px;
+  height: 400px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 3rem;
+  text-emphasis: bold;
 }
 </style>

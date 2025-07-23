@@ -20,6 +20,9 @@ db = mysql.connector.connect(
 
 cursor = db.cursor(dictionary=True)
 
+def get_cursor():
+    return get_db().cursor(dictionary=True)
+
 @app.route('/orders', methods=['GET'])
 def get_orders():
     cursor.execute("SELECT * FROM orders")
@@ -60,10 +63,6 @@ def delete_latest_order():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
 
 
 # Example JSON structure for the order
